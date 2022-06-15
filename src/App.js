@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
+import logo from './assets/logo.png'
 
-function Nav() {
+function Nav() {  
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
@@ -10,31 +11,31 @@ function Nav() {
 
           <div className="flex items-center justify-between h-16">
             <div className="flex-shrink-0">
-              <span className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"> MOVIES </span>
+              <img className="h-8 w-auto sm:h-10" src={logo} alt="" />
             </div>
             <div className="flex items-center">
 
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   <a
-                    href="#"
+                    href="_blank"
                     className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    Movielist
+                    MovieList
                   </a>
 
                   <a
-                    href="#"
+                    href="_blank"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    watchlist
+                    WatchList
                   </a>
 
                   <a
-                    href="#"
+                    href="_blank"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    add movies
+                    Add Movie
                   </a>
                 </div>
               </div>
@@ -99,24 +100,24 @@ function Nav() {
             <div className="md:hidden" id="mobile-menu">
               <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a
-                  href="#"
+                  href="_blank"
                   className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Movielist
                 </a>
 
                 <a
-                  href="#"
+                  href="_blank"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
-                  Watchlist
+                  WatchList
                 </a>
 
                 <a
-                  href="#"
+                  href="_blank"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
-                  addmovie
+                  Add Movie
                 </a>
               </div>
             </div>
