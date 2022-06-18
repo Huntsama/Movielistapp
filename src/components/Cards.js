@@ -1,9 +1,11 @@
-import React from 'react'
+import React ,{useContext} from 'react'
 import Moment from "react-moment"
+import { GlobalContext } from '../redux/GlobalState'
 
 
 
 export const Cards = ({ movie }) => {
+    const {addMovieToWatchlist} = useContext(GlobalContext);
     return (
         <div>
             {movie.poster_path ? (
@@ -18,7 +20,7 @@ export const Cards = ({ movie }) => {
 
                         </div>
                         <div className=" flex  row-auto  relative h-32  w-auto  mt-8">
-                            <button className=" bg-gray-700	 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded-full shadow-lg mr-5">
+                            <button onClick={()=>addMovieToWatchlist(movie) } className=" bg-gray-700	 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded-full shadow-lg mr-5">
                             Add to Watchlist
 
                             </button>
