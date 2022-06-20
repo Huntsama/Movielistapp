@@ -1,11 +1,29 @@
-import React ,{useContext} from 'react'
+import React, { useContext } from 'react'
 import Moment from "react-moment"
 import { GlobalContext } from '../redux/GlobalState'
 
 
 
 export const Cards = ({ movie }) => {
-    const {addMovieToWatchlist} = useContext(GlobalContext);
+
+    const {
+        addMovieToWatchlist,
+        addMovieToWatched,
+        watchlist,
+        watched,
+    } = useContext(GlobalContext);
+
+    let storedMovie = watchlist.find((o) => o.id === movie.id);
+    let storedMovieWatched = watched.find((o) => o.id === movie.id);
+
+    const watchlistDisabled = storedMovie
+        ? true
+        : storedMovieWatched
+            ? true
+            : false;
+
+    const watchedDisabled = storedMovieWatched ? true : false;
+
     return (
         <div>
             {movie.poster_path ? (
@@ -20,12 +38,15 @@ export const Cards = ({ movie }) => {
 
                         </div>
                         <div className=" flex  row-auto  relative h-32  w-auto  mt-8">
-                            <button onClick={()=>addMovieToWatchlist(movie) } className=" bg-gray-700	 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded-full shadow-lg mr-5">
-                            Add to Watchlist
+                            {/* TODO FIX THE DISABLED ISSUE  */}
+                            <button onClick={() => addMovieToWatchlist(movie)} disabled={watchlistDisabled}
+                                className=" bg-gray-700	disabled:opacity-100  text-white font-bold py-2 px-4 rounded-full shadow-lg mr-5">
+                                Add to Watchlist
 
                             </button>
-                            <button className="bg-gray-700 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded-full shadow-lg  ml-2 w-auto">
-                            Add to Watched
+                            <button disabled={watchedDisabled}
+                                onClick={() => addMovieToWatched(movie)} className="bg-gray-700  text-white font-bold py-2 px-4 rounded-full shadow-lg  ml-2 w-auto">
+                                Add to Watched
 
                             </button>
 
